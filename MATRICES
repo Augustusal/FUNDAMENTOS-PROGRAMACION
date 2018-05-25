@@ -1,0 +1,57 @@
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include <string>
+#define MAX 100
+
+using namespace std;
+
+void cargarMat(int MAT[MAX][MAX], int n, int m);
+void transpuesta(int MAT[MAX][MAX], int n,int m);
+void mostrarM(int T[MAX][MAX], int n, int m);
+void diagonal(int D[MAX][MAX], int n, int m);
+
+void main(){
+	int M[MAX][MAX], f,c;
+	cout<<"Ingrese el numero de filas: ";cin>>f;
+	cout<<"Ingrese el numero de columnas: ";cin>>c;
+	cargarMat(M,f,c);
+	
+	getch();
+
+}
+
+void cargarMat(int MAT[MAX][MAX], int n, int m)
+{int i,j; int T[MAX][MAX]; 
+	for(i=1;i<=n;i++)
+		for(j=1; j<=m;j++)
+			{cout<<"M["<<i<<"]["<<j<<"]= ";
+	cin>>MAT[i][j];}
+	diagonal(MAT,n,m);
+	for(i=1;i<=n;i++)
+		for(j=1;j<=m;j++)
+			{if(i==j)
+				T[i][j]=MAT[i][j];
+			else
+				T[i][j]=MAT[j][i];
+		}
+	mostrarM(T,n,m);
+	
+}
+void mostrarM(int T[MAX][MAX], int n, int m)
+{int i,j;
+cout<<"MATRIZ TRANSPUESTA"<<endl;
+	for(i=1;i<=n;i++)
+		for(j=1; j<=m;j++)
+			cout<<"T["<<i<<"]["<<j<<"]= "<<T[i][j]<<endl;
+}	
+void diagonal(int D[MAX][MAX], int n, int m)
+{int i,j,S=0;
+	for(i=1;i<=n;i++)
+		for(j=1; j<=m;j++)
+			if(i==j)
+				S=S+D[i][j];
+	cout<<"LA SUMA DE LA DIAGONAL PRINCIPAL ES: "<<S<<endl;
+
+}
